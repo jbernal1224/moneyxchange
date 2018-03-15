@@ -37,11 +37,14 @@ router.get('/', function(req, res) {
 });
 
 router.route('/currencies').get(function(req, res) {
-    res.json({types: ['USD', 'EU']});
+    res.json([
+        {name: 'USD', enabled: true},
+        {name: 'EUR', enabled: false}
+    ]);
 });
 
 router.route('/calculate').post(function(req, res) {
-    var newValue = req.body.value * req.body.valueEUR;
+    var newValue = req.body.valueUSD * req.body.valueEUR;
 
     res.json({value: newValue});
 });

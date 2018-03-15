@@ -44,7 +44,7 @@ router.route('/currencies').get(function(req, res) {
 });
 
 router.route('/calculate').post(function(req, res) {
-    var newValue = req.body.valueUSD * req.body.valueEUR;
+    var newValue = parseFloat(req.body.valueUSD) * parseFloat(req.body.valueEUR);
 
     res.json({value: newValue});
 });

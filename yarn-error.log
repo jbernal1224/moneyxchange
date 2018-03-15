@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/bin/node /usr/local/bin/yarn
+  /usr/local/nvm/v5.0.0/bin/node /usr/local/nvm/v5.0.0/bin/yarn
 
 PATH: 
-  /home/jorge/bin:/home/jorge/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+  /usr/local/nvm/v5.0.0/bin:/usr/local/nvm/v5.0.0/bin:/opt/firefox_test:/opt/java/latest/bin:/opt/iona/asp6.3.4/asp/6.3/bin:/opt/orbixetc/bin:/home/developer/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/opt/groovy/latest/bin:/opt/gradle/latest/bin:/opt/maven3/bin:/opt/idea/bin
 
 Yarn version: 
   1.5.1
 
 Node version: 
-  6.13.1
+  5.0.0
 
 Platform: 
   linux x64
@@ -433,5 +433,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
 Trace: 
-  Error: EACCES: permission denied, rmdir '/home/jorge/Documentos/moneyxchange/node_modules/.bin'
-      at Error (native)
+  Error: getaddrinfo ENOTFOUND lfnpm.swacorp.com lfnpm.swacorp.com:80
+      at errnoException (dns.js:26:10)
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:77:26)

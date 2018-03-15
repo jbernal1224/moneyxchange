@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { callApi } from '../core/service-caller';
+import Input from './input';
 
 class Form extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            floatValueUSD: 0.0,
             valueEUR: this.getValueEUR(),
-            valueUSD: 'USD'
+            valueUSD: '0.0'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,14 +24,11 @@ class Form extends Component {
             <div className="jumbotron">
                 <div className="form-row">
                     <div className="form-group col-md-6">
-                        <div className="input-group">
-                        <span class="input-group-addon">$</span>
-                            <input {...this.getInputUSDProps()}/>
-                        </div>
+                        <Input {...this.getInputUSDProps()}/>
                     </div>
                     <div className="form-group col-md-6">
                         <div className="input-group">
-                            <input {...this.getInputEUProps()}/>
+                            <Input {...this.getInputEUProps()}/>
                         </div>
                     </div>
                 </div>
@@ -46,9 +45,9 @@ class Form extends Component {
         return {
             'aria-label': 'Amount (to the nearest dollar)',
             className: 'form-control',
-            placeholder: 'US',
             onChange: this.handleChange,
-            type: 'number',
+            precision: '4',
+            prefix: '$',
             value: this.state.valueUSD
         };
     }
@@ -58,9 +57,9 @@ class Form extends Component {
             'aria-label': 'Amount (to the nearest euro)',
             className: 'form-control',
             disabled: true,
-            placeholder: 'EU',
-            type: 'number',
-            value: this.state.valueEUR           
+            precision: '4',
+            prefix: '€',
+            value: this.state.valueEUR
         };
     }
 
@@ -80,16 +79,17 @@ class Form extends Component {
         }, this)
     }
 
-    handleChange(event) {
+    handleChange(maskedvalue, floatvalue) {
         this.setState({
-            valueUSD: event.target.value
+            floatValueUSD: floatvalue,
+            valueUSD: maskedvalue
         });
     }
 
     handleClick() {
         var data = {
             base: 'USD',
-            valueUSD: this.state.valueUSD,
+            valueUSD: this.state.floatValueUSD,
             valueEUR: this.state.valueEUR
         };
 

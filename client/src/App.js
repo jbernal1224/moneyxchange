@@ -8,15 +8,13 @@ import Footer from './components/footer';
 
 /*
 añadir mas currencies
-hasta cuatro decimales
-formato moneda con simbolo punto separa decimales y coma los miles
 un unico test al menos probando cotizacion
 implementar loggin
 */
 
-class App extends Component {    
+class App extends Component {
 
-    componentDidMount() {        
+    componentDidMount() {
         callApi('/api/currencies', 'get')
         .then(this.handleServiceDone.bind(this))
         .catch(this.handleServiceFail);
@@ -24,7 +22,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container"> 
+            <div className="container">
                 <Header/>
                 <Form/>
                 <Footer/>

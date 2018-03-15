@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
-import logo from './logo.svg';
 import { callApi } from './core/service-caller';
 import Header from './components/header';
 import Form from './components/form';
@@ -31,7 +30,7 @@ class App extends Component {
     }
 
     handleServiceDone(data) {
-        console.log("Error", data);
+        console.log("Currencies", data);
     }
 
     handleServiceFail() {

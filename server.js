@@ -19,7 +19,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', function() {
-  console.log("DB connection alive");
+    console.log("DB connection alive");
 });
 
 var Currency = require('./app/models/currency');
@@ -37,10 +37,12 @@ router.get('/', function(req, res) {
 });
 
 router.route('/currencies').get(function(req, res) {
-    res.json([
-        {name: 'USD', enabled: true},
-        {name: 'EUR', enabled: false}
-    ]);
+    db.collection('currencies').find().toArray(function (err, result) {
+        if (err) return console.log(err)
+
+        console.log("currencies", currencies)
+        res.json({currencies: result})
+    });
 });
 
 router.route('/calculate').post(function(req, res) {

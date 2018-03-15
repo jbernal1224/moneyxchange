@@ -6,6 +6,14 @@ import Header from './components/header';
 import Form from './components/form';
 import Footer from './components/footer';
 
+/*
+añadir mas currencies
+hasta cuatro decimales
+formato moneda con simbolo punto separa decimales y coma los miles
+un unico test al menos probando cotizacion
+implementar loggin
+*/
+
 class App extends Component {    
 
     componentDidMount() {        

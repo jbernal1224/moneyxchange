@@ -23,12 +23,13 @@ class Form extends Component {
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <div className="input-group">
-                            <input type="number" value={this.state.valueUSD} onChange={this.handleChange} className="form-control" aria-label="Amount (to the nearest dollar)" placeholder="USD"/>
+                        <span class="input-group-addon">$</span>
+                            <input {...this.getInputUSDProps()}/>
                         </div>
                     </div>
                     <div className="form-group col-md-6">
                         <div className="input-group">
-                            <input type="number" value={this.state.valueEUR} className="form-control" disabled placeholder="EU"/>
+                            <input {...this.getInputEUProps()}/>
                         </div>
                     </div>
                 </div>
@@ -39,6 +40,28 @@ class Form extends Component {
                 </div>
             </div>
         );
+    }
+
+    getInputUSDProps() {
+        return {
+            'aria-label': 'Amount (to the nearest dollar)',
+            className: 'form-control',
+            placeholder: 'US',
+            onChange: this.handleChange,
+            type: 'number',
+            value: this.state.valueUSD
+        };
+    }
+
+    getInputEUProps() {
+        return {
+            'aria-label': 'Amount (to the nearest euro)',
+            className: 'form-control',
+            disabled: true,
+            placeholder: 'EU',
+            type: 'number',
+            value: this.state.valueEUR           
+        };
     }
 
     getButtonProps() {
@@ -76,9 +99,9 @@ class Form extends Component {
                 valueEUR: response.value
             });
         }, this)
-        .catch(
-            console.log("error in service")
-        );
+        .catch((error) => {
+            console.log("error in service", error);
+        });
     }
 }
 

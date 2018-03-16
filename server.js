@@ -37,12 +37,7 @@ router.get('/', function(req, res) {
 });
 
 router.route('/currencies').get(function(req, res) {
-    db.collection('currencies').find().toArray(function (err, result) {
-        if (err) return console.log(err)
-
-        console.log("currencies", currencies)
-        res.json({currencies: result})
-    });
+    res.json({currencies: ['USD', 'EU']});
 });
 
 router.route('/calculate').post(function(req, res) {
